@@ -22,7 +22,6 @@ public class DacharatGame extends NumberGame {
 		Random rand = new Random(seed);
 		secret = rand.nextInt(upperBound) + 1;
 		System.out.println(secret);
-		super.setMessage("I'm thinking of a number between 1 and 20");
 	}
 
 	/**

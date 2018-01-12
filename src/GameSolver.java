@@ -20,7 +20,8 @@ public class GameSolver {
 	 */
 	public int play(NumberGame game) {
 		boolean correct = false;
-		int guess = 100/2;
+		int guess = game.getUpperBound() / 2;
+		int time = 2;
 		String answer = "";
 		// describe the game
 		System.out.println(game.toString());
@@ -29,10 +30,11 @@ public class GameSolver {
 
 		while (correct == false) {
 			if (answer == "Too small!!") {
-				guess = guess + (guess/2);
-			}
-			else if(answer == "Too large!!"){
-				guess = guess/2;
+				guess = guess + (guess / time);
+				time += 2;
+			} else if (answer == "Too large!!") {
+				guess = guess - (guess / time);
+				time += 2;
 			}
 			System.out.print("Your answer? ");
 			System.out.println(guess);

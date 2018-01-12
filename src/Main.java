@@ -7,11 +7,14 @@ public class Main {
 	public static void main(String[] args) {
 		// upper limit for secret number in guessing game
 		int upperBound = 100;
-		NumberGame game = new SampleGame(upperBound);
-		GameConsole ui = new GameConsole( );
-		int solution = ui.play( game );
+		DacharatGame game = new DacharatGame(upperBound);
+//		GameConsole ui = new GameConsole( );
+		GameSolver g = new GameSolver();
+//		int solution = ui.play( game );
+		g.play(game);
 		//TODO display the answer returned by play
-		System.out.println("play() returned "+solution);
+//		System.out.println("play() returned "+solution);
+		System.out.println("You use "+game.getCount()+" times");
 		//TODO display how many guesses the user made
 	}
 }

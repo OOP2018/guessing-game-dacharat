@@ -9,6 +9,8 @@
 public class NumberGame {
 	/** A helpful message for user. */
 	private String message;
+	
+	public int count = 0;
 
     /** Initialize a new default game. */
     public NumberGame() {
@@ -52,6 +54,10 @@ public class NumberGame {
 	 */
 	public int getUpperBound() {
 		return Integer.MAX_VALUE;  // not very helpful :-)
+	}
+	
+	public int getCount() {
+		return count;
 	}
     
     /**

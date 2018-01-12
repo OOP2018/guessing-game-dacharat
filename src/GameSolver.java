@@ -29,18 +29,19 @@ public class GameSolver {
 		System.out.println(game.getMessage());
 
 		while (correct == false) {
-			if (answer == "Too small!!") {
-				guess = guess + (guess / time);
-				time += 2;
-			} else if (answer == "Too large!!") {
-				guess = guess - (guess / time);
-				time += 2;
-			}
 			System.out.print("Your answer? ");
 			System.out.println(guess);
 			correct = game.guess(guess);
 			answer = game.getMessage();
 			System.out.println(answer);
+			if (answer == "Too small!!") {
+				guess = guess + (50 / time);
+			} else if (answer == "Too large!!") {
+				guess = guess - (50 / time);
+			}
+			if (50 / time > 1) {
+				time *= 2;
+			}
 		}
 
 		return guess;

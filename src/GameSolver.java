@@ -18,9 +18,14 @@ public class GameSolver {
 	 *            is the NumberGame to solve
 	 * @return
 	 */
+
 	public int play(NumberGame game) {
 		boolean correct = false;
-		int guess = game.getUpperBound() / 2;
+		int min = 1;
+		int max = game.getUpperBound();
+		int guess = min + (max - min) / 2;
+		int constance = min + (max - min) / 2;
+		int lastGuess = guess;
 		int time = 2;
 		String answer = "";
 		// describe the game
@@ -35,15 +40,20 @@ public class GameSolver {
 			answer = game.getMessage();
 			System.out.println(answer);
 			if (answer == "Too small!!") {
-				guess = guess + (50 / time);
+				guess = guess + (constance / time);
 			} else if (answer == "Too large!!") {
-				guess = guess - (50 / time);
+				guess = guess - (constance / time);
 			}
-			if (50 / time > 1) {
+			if (lastGuess == guess) {
+				guess = guess + 1;
+			}
+			if (constance / time > 1) {
 				time *= 2;
 			}
+			lastGuess = guess;
 		}
 
 		return guess;
 	}
+
 }

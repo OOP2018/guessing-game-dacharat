@@ -21,7 +21,7 @@ public class DacharatGame extends NumberGame {
 		long seed = System.nanoTime();
 		Random rand = new Random(seed);
 		secret = rand.nextInt(upperBound) + 1;
-		System.out.println(secret);
+//		System.out.println(secret);
 	}
 
 	/**
@@ -57,6 +57,11 @@ public class DacharatGame extends NumberGame {
 		return upperBound;
 	}
 
+	@Override
+	public int getCount() {
+		return count;
+	}
+	
 	/**
 	 * return range of number that you can guess.
 	 * 

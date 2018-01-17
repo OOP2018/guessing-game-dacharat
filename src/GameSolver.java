@@ -29,16 +29,16 @@ public class GameSolver {
 		int time = 2;
 		String answer = "";
 		// describe the game
-		System.out.println(game.toString());
+//		System.out.println(game.toString());
 		// This is just an example.
-		System.out.println(game.getMessage());
+//		System.out.println(game.getMessage());
 
 		while (correct == false) {
-			System.out.print("Your answer? ");
-			System.out.println(guess);
+//			System.out.print("Your answer? ");
+//			System.out.println(guess);
 			correct = game.guess(guess);
 			answer = game.getMessage();
-			System.out.println(answer);
+//			System.out.println(answer);
 			if (answer == "Too small!!") {
 				guess = guess + (constance / time);
 			} else if (answer == "Too large!!") {

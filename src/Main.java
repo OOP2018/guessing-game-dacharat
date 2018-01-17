@@ -10,11 +10,8 @@ public class Main {
 		DacharatGame game = new DacharatGame(upperBound);
 //		GameConsole ui = new GameConsole( );
 		GameSolver g = new GameSolver();
-//		int solution = ui.play( game );
-		g.play(game);
-		//TODO display the answer returned by play
-//		System.out.println("play() returned "+solution);
+		int solution = g.play( game );
+		System.out.println("play() returned "+solution);
 		System.out.println("You use "+game.getCount()+" times");
-		//TODO display how many guesses the user made
 	}
 }

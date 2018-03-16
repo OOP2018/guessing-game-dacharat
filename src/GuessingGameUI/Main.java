@@ -11,16 +11,22 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * Create a JavaFX user interface with 1 input view and 3 observers that show
+ * the game value, so that all the views refer to the same NumberGame object.
+ * 
+ * @author Dacharat Pankong
+ *
+ */
 public class Main extends Application {
-
-	private static DacharatGame game = new DacharatGame(100);
-	private static GameController control;
 	
+	/**
+	 * Run all user interface.
+	 */
 	@Override
 	public void start(Stage stage) {
 
-//		DacharatGame game = new DacharatGame(100);
-//		GameController control;
+		DacharatGame game = new DacharatGame(100);
 		
 		try {
 			URL url = getClass().getResource("GameUI.fxml");
@@ -31,7 +37,7 @@ public class Main extends Application {
 			FXMLLoader loader = new FXMLLoader(url);
 			Parent root = loader.load();
 
-			control = loader.getController();
+			GameController control = loader.getController();
 			control.setGame(game);
 			Scene scene = new Scene(root);
 			stage.setScene(scene);

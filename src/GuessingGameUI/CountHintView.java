@@ -11,17 +11,32 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-public class CountHintView implements java.util.Observer{
+/**
+ * User Interface that show number of count that you use to guess number.
+ * 
+ * @author Dacharat Pankong
+ *
+ */
+public class CountHintView implements java.util.Observer {
 
 	private Stage stage;
 	private DacharatGame game;
 	private Label label;
 
+	/**
+	 * Initialize a CountHintView, which show value of game.
+	 * 
+	 * @param game
+	 *            the game to display.
+	 */
 	public CountHintView(DacharatGame game) {
 		this.game = game;
 		initComponents();
 	}
 
+	/**
+	 * Create UI to show number of count.
+	 */
 	private void initComponents() {
 		stage = new Stage();
 		HBox root = new HBox();
@@ -37,16 +52,25 @@ public class CountHintView implements java.util.Observer{
 		stage.setTitle("Count Guest");
 		stage.sizeToScene();
 	}
-	
+
+	/**
+	 * Show the window and update the game value.
+	 */
 	public void run() {
 		stage.show();
 		displayCount();
 	}
 
+	/**
+	 * Show number of count on UI.
+	 */
 	private void displayCount() {
-		label.setText( String.format("%2d", game.getCount()) );
+		label.setText(String.format("%2d", game.getCount()));
 	}
 
+	/**
+	 * Update what happen in observable.
+	 */
 	@Override
 	public void update(Observable o, Object arg) {
 		displayCount();

@@ -14,6 +14,12 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+/**
+ * The Guessing Game GUI.
+ * 
+ * @author Dacharat Pankong
+ *
+ */
 public class GameController {
 
 	@FXML
@@ -28,17 +34,33 @@ public class GameController {
 	Button giveUpButton;
 
 	public DacharatGame game;
-	private static int guess;
 	private boolean isEnd = false;
 
+	/**
+	 * Set a reference to game.
+	 * 
+	 * @param game
+	 *            the game to display.
+	 */
 	public void setGame(DacharatGame game) {
 		this.game = game;
 	}
 
+	/**
+	 * Check that game is end or not.
+	 * 
+	 * @return true if game is end(guess = secret). false if otherwise.
+	 */
 	public boolean isEnd() {
 		return isEnd;
 	}
 
+	/**
+	 * Guess number from input and return if with hint that it equal secret or not.
+	 * Special : if it end game you can choose to exit program or play again.
+	 * 
+	 * @param event
+	 */
 	public void guessNumberHandler(ActionEvent event) {
 		String guess = guessText.getText().trim();
 		try {
@@ -52,13 +74,18 @@ public class GameController {
 		} catch (NumberFormatException e) {
 			hintLabel.setText("Please enter number!!");
 			hintLabel.setStyle("-fx-text-fill: red");
-			
+
 		}
 		guessText.clear();
 	}
 
+	/**
+	 * Alert window will ask you to close this program or play again.
+	 * 
+	 * @param event
+	 */
 	public void gameEndHandler(ActionEvent event) {
-		
+
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("Confirmation Dialog");
 		alert.setHeaderText("Secret number is : " + game.getSecret());
@@ -76,14 +103,16 @@ public class GameController {
 			Platform.exit();
 		}
 	}
-	
+
+	/**
+	 * Give up this game it will show you the secret and ask you to play again.
+	 * 
+	 * @param event
+	 */
 	public void giveUpHandler(ActionEvent event) {
-		
+
 		game.guess(game.getSecret());
 		gameEndHandler(event);
 	}
 
-	public static int getGuess() {
-		return guess;
-	}
 }

@@ -63,6 +63,9 @@ public class DacharatGame extends NumberGame {
 		return upperBound;
 	}
 
+	/**
+	 * Return count that is number of guess you use.
+	 */
 	@Override
 	public int getCount() {
 		return count;
@@ -73,7 +76,7 @@ public class DacharatGame extends NumberGame {
 	 */
 	public void restart() {
 		secret = rand.nextInt(upperBound) + 1;
-		System.out.println(secret);
+//		System.out.println(secret);
 		count = 0;
 		this.setChanged();
 		this.notifyObservers();

@@ -1,14 +1,21 @@
 package game;
+
 import java.util.Observable;
 import java.util.Scanner;
 
 /**
  * Play guessing game on the console.
  */
-public class GameConsole implements java.util.Observer{
-	
+public class GameConsole implements java.util.Observer {
+
 	DacharatGame game;
-	
+
+	/**
+	 * A CountHintView with reference to a DacharatGame (the subject).
+	 * 
+	 * @param game
+	 *            the game to display.
+	 */
 	public GameConsole(DacharatGame game) {
 		this.game = game;
 	}
@@ -39,6 +46,9 @@ public class GameConsole implements java.util.Observer{
 		return guess;
 	}
 
+	/**
+	 * Update what happen in observable.
+	 */
 	@Override
 	public void update(Observable o, Object arg) {
 		System.out.println("You guess " + game.getCount() + " times.");

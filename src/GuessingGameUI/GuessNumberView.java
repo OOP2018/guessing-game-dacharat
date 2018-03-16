@@ -10,16 +10,28 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
+/**
+ * User Interface that show the last number that you guess.
+ * 
+ * @author Dacharat Pankong
+ *
+ */
 public class GuessNumberView implements java.util.Observer {
 
 	private Stage stage;
 	private Label label;
 	private int lastguess = 0;
 
+	/**
+	 * Initialize a CountHintView, which show value of game.
+	 */
 	public GuessNumberView() {
 		initComponents();
 	}
 
+	/**
+	 * Create UI to show the last number that you guess.
+	 */
 	private void initComponents() {
 		stage = new Stage();
 		HBox root = new HBox();
@@ -36,15 +48,24 @@ public class GuessNumberView implements java.util.Observer {
 		stage.sizeToScene();
 	}
 
+	/**
+	 * Show the window and update the game value.
+	 */
 	public void run() {
 		stage.show();
 		displayCount();
 	}
 
+	/**
+	 * Show number of count on UI.
+	 */
 	private void displayCount() {
 		label.setText(String.format("%2d", lastguess));
 	}
 
+	/**
+	 * Update what happen in observable.
+	 */
 	@Override
 	public void update(Observable o, Object arg) {
 		if (arg != null)

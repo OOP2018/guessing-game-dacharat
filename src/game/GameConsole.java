@@ -1,9 +1,17 @@
+package game;
+import java.util.Observable;
 import java.util.Scanner;
 
 /**
  * Play guessing game on the console.
  */
-public class GameConsole {
+public class GameConsole implements java.util.Observer{
+	
+	DacharatGame game;
+	
+	public GameConsole(DacharatGame game) {
+		this.game = game;
+	}
 
 	/** play the game. */
 	/**
@@ -12,7 +20,7 @@ public class GameConsole {
 	 * @param game
 	 * @return true when you win the game.
 	 */
-	public int play(NumberGame game) {
+	public int play() {
 		boolean correct = false;
 		int guess = 0;
 		Scanner console = new Scanner(System.in);
@@ -29,6 +37,11 @@ public class GameConsole {
 			System.out.println(game.getMessage());
 		}
 		return guess;
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		System.out.println("You guess " + game.getCount() + " times.");
 	}
 
 }

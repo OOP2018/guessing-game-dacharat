@@ -1,3 +1,5 @@
+package game;
+
 import java.util.Random;
 
 /**
@@ -21,31 +23,33 @@ public class DacharatGame extends NumberGame {
 		long seed = System.nanoTime();
 		Random rand = new Random(seed);
 		secret = rand.nextInt(upperBound) + 1;
-//		System.out.println(secret);
+		// System.out.println(secret);
 	}
 
 	/**
 	 * This method use to check that your input number is correct or not.
 	 * 
 	 * @param number
-	 * @return true if number is equal secret.
-	 * 		 false if number is not equal
-	 *         secret.
+	 * @return true if number is equal secret. false if number is not equal secret.
 	 */
 	@Override
 	public boolean guess(int number) {
 		count++;
 		if (number == secret) {
 			setMessage("Correct!!");
+			this.setChanged();
+			this.notifyObservers(number);
 			return true;
-		} else if (number < secret) {
-			setMessage("Too small!!");
-			return false;
-		} else if (number > secret) {
-			setMessage("Too large!!");
+		} else {
+			if (number < secret) {
+				setMessage("Too small!!");
+			} else if (number > secret) {
+				setMessage("Too large!!");
+			}
+			this.setChanged();
+			this.notifyObservers(number);
 			return false;
 		}
-		return false;
 	}
 
 	/**
@@ -61,7 +65,7 @@ public class DacharatGame extends NumberGame {
 	public int getCount() {
 		return count;
 	}
-	
+
 	/**
 	 * return range of number that you can guess.
 	 * 

@@ -38,6 +38,7 @@
                   <Insets left="20.0" right="20.0" />
                </HBox.margin>
             </Button>
+            <Button fx:id="giveUpButton" mnemonicParsing="false" onAction="#giveUpHandler" text="Give up!" textAlignment="CENTER" textFill="#cd1c1c" />
          </children>
       </HBox>
    </children>

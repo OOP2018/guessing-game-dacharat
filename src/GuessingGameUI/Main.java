@@ -13,11 +13,15 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
+	private static DacharatGame game = new DacharatGame(100);
+	private static GameController control;
+	
 	@Override
 	public void start(Stage stage) {
 
-		DacharatGame game = new DacharatGame(100);
-
+//		DacharatGame game = new DacharatGame(100);
+//		GameController control;
+		
 		try {
 			URL url = getClass().getResource("GameUI.fxml");
 			if (url == null) {
@@ -27,7 +31,7 @@ public class Main extends Application {
 			FXMLLoader loader = new FXMLLoader(url);
 			Parent root = loader.load();
 
-			GameController control = loader.getController();
+			control = loader.getController();
 			control.setGame(game);
 			Scene scene = new Scene(root);
 			stage.setScene(scene);
@@ -54,6 +58,6 @@ public class Main extends Application {
 
 	public static void main(String[] args) {
 		launch(args);
-	}
+	}	
 
 }

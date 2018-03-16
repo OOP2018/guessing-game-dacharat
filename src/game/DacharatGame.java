@@ -11,6 +11,8 @@ import java.util.Random;
 public class DacharatGame extends NumberGame {
 	private int upperBound;
 	private int secret;
+	private long seed = System.nanoTime();
+	private Random rand = new Random(seed);
 
 	/**
 	 * Initialize a new game.
@@ -20,10 +22,10 @@ public class DacharatGame extends NumberGame {
 	 */
 	public DacharatGame(int upperBound) {
 		this.upperBound = upperBound;
-		long seed = System.nanoTime();
-		Random rand = new Random(seed);
+//		long seed = System.nanoTime();
+//		Random rand = new Random(seed);
 		secret = rand.nextInt(upperBound) + 1;
-		// System.out.println(secret);
+//		System.out.println(secret);
 	}
 
 	/**
@@ -64,6 +66,26 @@ public class DacharatGame extends NumberGame {
 	@Override
 	public int getCount() {
 		return count;
+	}
+	
+	/**
+	 * Restart this game.
+	 */
+	public void restart() {
+		secret = rand.nextInt(upperBound) + 1;
+		System.out.println(secret);
+		count = 0;
+		this.setChanged();
+		this.notifyObservers();
+	}
+	
+	/**
+	 * Return secret number of this game.
+	 * 
+	 * @return secret number of this game.
+	 */
+	public int getSecret() {
+		return secret;
 	}
 
 	/**

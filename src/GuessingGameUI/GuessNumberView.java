@@ -14,7 +14,7 @@ public class GuessNumberView implements java.util.Observer {
 
 	private Stage stage;
 	private Label label;
-	private int lastguess;
+	private int lastguess = 0;
 
 	public GuessNumberView() {
 		initComponents();
@@ -35,19 +35,20 @@ public class GuessNumberView implements java.util.Observer {
 		stage.setTitle("Guess number");
 		stage.sizeToScene();
 	}
-	
+
 	public void run() {
 		stage.show();
 		displayCount();
 	}
 
 	private void displayCount() {
-		label.setText( String.format("%2d", lastguess) );
+		label.setText(String.format("%2d", lastguess));
 	}
 
 	@Override
 	public void update(Observable o, Object arg) {
-		lastguess = (int) arg;
+		if (arg != null)
+			lastguess = (int) arg;
 		displayCount();
 	}
 
